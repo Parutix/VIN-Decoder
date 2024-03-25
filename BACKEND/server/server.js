@@ -1,8 +1,8 @@
 import express from "express";
-import usersRoutes from "../routes/users.js";
+import usersRoutes from "../routes/routes.js";
 const app = express();
 
-app.use("/users", usersRoutes);
+app.use("/", usersRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
