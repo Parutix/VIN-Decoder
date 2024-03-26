@@ -1,19 +1,25 @@
-import mysql from "mysql";
+import { createConnection, Connection } from "typeorm";
+import User from "../entities/userEntity";
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "password",
-  database: "cars",
-  port: 3306,
-});
-
-db.connect((err) => {
-  if (err) {
-    console.error("Error connecting to database: ", err);
-    return;
+async function connectToDatabase(): Promise<Connection> {
+  try {
+    const connection = await createConnection({
+      type: "mysql",
+      host: "localhost",
+      port: 3306,
+      username: "root",
+      password: "password",
+      database: "cars",
+      synchronize: true,
+      logging: false,
+      entities: [User],
+    });
+    console.log("Connected to the database");
+    return connection;
+  } catch (error) {
+    console.error("Error connecting to the database:", error);
+    throw error;
   }
-  console.log("Connected to database");
-});
+}
 
-export default db;
+export default connectToDatabase;

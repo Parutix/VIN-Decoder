@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/server.ts"
+    "dev": "nodemon ./src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +18,11 @@
     "mysql2": "^3.9.3",
     "ts-node": "^10.9.2",
     "typeorm": "^0.3.20",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "validator": "^13.11.0"
   },
   "devDependencies": {
-    "@types/mysql": "^2.15.26"
+    "@types/mysql": "^2.15.26",
+    "@types/validator": "^13.11.9"
   }
 }
