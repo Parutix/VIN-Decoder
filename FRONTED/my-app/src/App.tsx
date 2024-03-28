@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import OverviewPage from "./pages/Overview/OverviewPage";
+import RegisterPage from "./pages/Register/RegisterPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function AppLayout() {
     <div>
       <Routes>
         <Route path="/" element={<OverviewPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </div>
   );

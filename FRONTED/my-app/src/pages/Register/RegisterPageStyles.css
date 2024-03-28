@@ -1,0 +1,46 @@
+.register_background {
+  background-color: #eeeeee;
+}
+
+.register_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 10px 10px;
+}
+.register_form .register_input {
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #76885b;
+}
+.register_form .register_button {
+  margin: 30px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #76885b;
+  background-color: #76885b;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.register_form .account_have_text {
+  font-size: 20px;
+}
+.register_form .account_have_link {
+  text-decoration: none;
+  margin-left: 10px;
+  color: #627254;
+}/*# sourceMappingURL=RegisterPageStyles.css.map */
