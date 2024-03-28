@@ -1,0 +1,52 @@
+$background-color: #eeeeee;
+$font-color: #333333;
+$accent-color: #76885b;
+$alternate-color: #627254;
+
+.login_background {
+  background-color: $background-color;
+}
+
+.login_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .login_button {
+    margin: 30px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid $accent-color;
+    background-color: $accent-color;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .account_have_link {
+    text-decoration: none;
+    margin-left: 10px;
+    color: $alternate-color;
+  }
+}
+
+.login_input {
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid $accent-color;
+}
