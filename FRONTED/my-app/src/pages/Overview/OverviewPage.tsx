@@ -1,5 +1,5 @@
 import React from "react";
-import "./OverviewPage.css";
+import "./OverviewPageStyles.css";
 import backgroundImage from "../../assets/background.jpg";
 import { Link } from "react-router-dom";
 

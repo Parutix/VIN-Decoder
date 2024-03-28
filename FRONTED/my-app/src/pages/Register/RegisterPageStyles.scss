@@ -1,0 +1,55 @@
+$background-color: #eeeeee;
+$font-color: #333333;
+$accent-color: #76885b;
+$alternate-color: #627254;
+
+.register_background {
+  background-color: $background-color;
+}
+
+.register_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 10px 10px;
+
+  .register_input {
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid $accent-color;
+  }
+
+  .register_button {
+    margin: 30px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid $accent-color;
+    background-color: $accent-color;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .account_have_text {
+    font-size: 20px;
+  }
+
+  .account_have_link {
+    text-decoration: none;
+    margin-left: 10px;
+    color: $alternate-color;
+  }
+}
