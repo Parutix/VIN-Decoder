@@ -5,17 +5,6 @@ import { getManager } from "typeorm";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export const createToken = (user: User) => {
-  const payload = {
-    user_id: user.user_id,
-    email: user.email,
-  };
-
-  return jwt.sign(payload, "secret_vin_key", {
-    expiresIn: "1h",
-  });
-};
-
 export const create_user = async (user: User) => {
   try {
     if (!validator.isEmail(user.email)) {
@@ -57,8 +46,7 @@ export const get_user = async (email: string, password: string) => {
     if (!passwordMatch) {
       return null;
     }
-    const token = createToken(user);
-    return { user, token };
+    return { user };
   } catch (error) {
     console.error("Error getting user:", error);
     return null;
