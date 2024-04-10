@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginPageStyles.css";
+import { isValidToken } from "../../helpers/authHelpers";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -40,7 +41,9 @@ const LoginPage = () => {
         if (token) {
           localStorage.setItem("token", token);
           alert("User logged in successfully!");
-          navigate("/home");
+          if (await isValidToken(token)) {
+            navigate("/home");
+          }
         } else {
           alert("Failed to login user!");
         }
