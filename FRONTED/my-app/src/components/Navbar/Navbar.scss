@@ -1,0 +1,38 @@
+$background-color: #eeeeee;
+$font-color: #333333;
+$accent-color: #76885b;
+$alternate-color: #627254;
+$hover-color: rgb(90, 105, 68);
+
+.nav {
+  background-color: $background-color;
+  color: $alternate-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: $alternate-color;
+}
+
+.nav a:hover {
+  color: $hover-color;
+  transition: 0.5s;
+}
