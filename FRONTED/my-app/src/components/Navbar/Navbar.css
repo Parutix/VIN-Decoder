@@ -1,0 +1,32 @@
+.nav {
+  background-color: #eeeeee;
+  color: #627254;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #627254;
+}
+
+.nav a:hover {
+  color: rgb(90, 105, 68);
+  transition: 0.5s;
+}/*# sourceMappingURL=Navbar.css.map */
