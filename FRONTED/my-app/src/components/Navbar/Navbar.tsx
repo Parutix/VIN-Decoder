@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 import "./Navbar.css";
+import { isValidToken } from "../../helpers/authHelpers";
+import { UpdateAuthenticationType } from "../../types/UpdateAuthenticationType";
 
 const Navbar = () => {
+  const token = localStorage.getItem("token");
+
   return (
     <nav className="nav">
       <a href="/home" className="siteTitle">

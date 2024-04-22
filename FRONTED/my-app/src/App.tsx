@@ -16,6 +16,8 @@ import { UpdateAuthenticationType } from "./types/UpdateAuthenticationType";
 
 function AppLayout() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   const location = useLocation();
   const hideNavbar =
     location.pathname === "/" ||
@@ -36,7 +38,10 @@ function AppLayout() {
       } else {
         setIsAuthenticated(false);
       }
+      setIsLoading(false);
     };
+
+    checkAuthentication();
 
     window.addEventListener("loginSuccess", checkAuthentication);
 
@@ -45,11 +50,15 @@ function AppLayout() {
     };
   }, []);
 
-  console.log("isAuthenticated", isAuthenticated);
+  console.log("isAuthenticated de acasa", isAuthenticated);
 
   const updateAuthentication: UpdateAuthenticationType = (value) => {
     setIsAuthenticated(value);
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
