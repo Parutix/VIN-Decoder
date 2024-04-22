@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginPageStyles.css";
+import { isValidToken } from "../../helpers/authHelpers";
+import { UpdateAuthenticationType } from "../../types/UpdateAuthenticationType";
 
-const LoginPage = () => {
+type LoginPageProps = {
+  updateAuthentication: UpdateAuthenticationType;
+};
+
+const LoginPage = ({ updateAuthentication }: LoginPageProps) => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
@@ -39,8 +45,14 @@ const LoginPage = () => {
         const token = responseData.token;
         if (token) {
           localStorage.setItem("token", token);
+          const isValid = await isValidToken(token);
           alert("User logged in successfully!");
-          navigate("/home");
+          if (isValid) {
+            updateAuthentication(true);
+            console.log("Redirectionare la Home");
+            navigate("/home");
+            return;
+          }
         } else {
           alert("Failed to login user!");
         }

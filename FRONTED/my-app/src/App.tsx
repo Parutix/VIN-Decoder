@@ -4,64 +4,78 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import OverviewPage from "./pages/Overview/OverviewPage";
 import RegisterPage from "./pages/Register/RegisterPage";
 import LoginPage from "./pages/Login/LoginPage";
 import HomePage from "./pages/Home/HomePage";
+import { isValidToken } from "./helpers/authHelpers";
+import Navbar from "./components/Navbar/Navbar";
+import { UpdateAuthenticationType } from "./types/UpdateAuthenticationType";
 
-function App() {
+function AppLayout() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const location = useLocation();
+  const hideNavbar =
+    location.pathname === "/" ||
+    location.pathname === "/register" ||
+    location.pathname === "/login";
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      isValidToken(token)
-        .then((isValid) => {
+    const checkAuthentication = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          const isValid = await isValidToken(token);
           setIsAuthenticated(isValid);
-        })
-        .catch((error) => {
+        } catch (error) {
           console.error("Error verifying token:", error);
           setIsAuthenticated(false);
-        });
-    } else {
-      setIsAuthenticated(false);
-    }
+        }
+      } else {
+        setIsAuthenticated(false);
+      }
+    };
+
+    window.addEventListener("loginSuccess", checkAuthentication);
+
+    return () => {
+      window.removeEventListener("loginSuccess", checkAuthentication);
+    };
   }, []);
 
-  const isValidToken = async (token: String) => {
-    try {
-      const response = await fetch(
-        "http://localhost:3000/api/users/verifyToken",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `${token}`,
-          },
-        }
-      );
-      return response.ok;
-    } catch (error) {
-      console.error("Error verifying token:", error);
-      return false;
-    }
+  console.log("isAuthenticated", isAuthenticated);
+
+  const updateAuthentication: UpdateAuthenticationType = (value) => {
+    setIsAuthenticated(value);
   };
 
   return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<OverviewPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
+    <div>
+      {!hideNavbar && <Navbar />}
+      <Routes>
+        <Route path="/" element={<OverviewPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/login"
+          element={<LoginPage updateAuthentication={updateAuthentication} />}
+        />
+        <Route
+          path="/home"
+          element={
+            isAuthenticated ? <HomePage /> : <Navigate to="/login" replace />
+          }
+        />
+      </Routes>
+    </div>
+  );
+}
 
-          <Route
-            path="/home"
-            element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />}
-          />
-        </Routes>
-      </div>
+function App() {
+  return (
+    <Router>
+      <AppLayout />
     </Router>
   );
 }
