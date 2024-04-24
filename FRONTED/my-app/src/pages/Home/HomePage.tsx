@@ -4,7 +4,10 @@ import "./HomePage.css";
 const HomePage = () => {
   return (
     <div className="home-page">
-      <h1>Home Page</h1>
+      <div className="home_container">
+        <input type="text" placeholder="VIN" />
+        <button>Submit</button>
+      </div>
     </div>
   );
 };
