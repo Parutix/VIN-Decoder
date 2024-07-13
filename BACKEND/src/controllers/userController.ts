@@ -1,4 +1,3 @@
-// userController.ts
 import { Request, Response } from "express";
 import * as userService from "../services/userService";
 import bcrypt from "bcrypt";
