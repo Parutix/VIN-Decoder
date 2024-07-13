@@ -64,11 +64,27 @@ function AppLayout() {
     <div>
       {!hideNavbar && <Navbar />}
       <Routes>
-        <Route path="/" element={<OverviewPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? <Navigate to="/home" replace /> : <OverviewPage />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            isAuthenticated ? <Navigate to="/home" replace /> : <RegisterPage />
+          }
+        />
         <Route
           path="/login"
-          element={<LoginPage updateAuthentication={updateAuthentication} />}
+          element={
+            isAuthenticated ? (
+              <Navigate to="/home" replace />
+            ) : (
+              <LoginPage updateAuthentication={updateAuthentication} />
+            )
+          }
         />
         <Route
           path="/home"
