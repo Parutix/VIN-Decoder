@@ -68,7 +68,6 @@ const LoginPage = ({ updateAuthentication }: LoginPageProps) => {
     }
   };
 
-  // HTML Part
   return (
     <div className="login_background">
       <div className="login_container">

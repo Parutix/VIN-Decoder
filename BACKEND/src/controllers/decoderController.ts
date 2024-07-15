@@ -3,8 +3,8 @@ import * as decoderService from "../services/decoderService";
 
 export const decodeVIN = async (req: Request, res: Response) => {
   try {
-    const vin = req.body.vin;
-    console.log(vin);
+    const vin = req.query.vin as string;
+    console.log("VIN:", vin);
     const decodedVIN = await decoderService.decodeVIN(vin);
     if (decodedVIN) {
       res.status(200).json(decodedVIN);
