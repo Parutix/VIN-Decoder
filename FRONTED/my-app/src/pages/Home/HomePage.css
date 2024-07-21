@@ -26,4 +26,16 @@ body {
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+}
+
+.car-info {
+  margin-top: 20px;
+}
+
+.car-info h2 {
+  margin-bottom: 20px;
+}
+
+.car-info p {
+  margin: 5px 0;
 }/*# sourceMappingURL=HomePage.css.map */

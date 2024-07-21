@@ -6,6 +6,7 @@ const HomePage = () => {
     vin: "",
   });
   const [carInfo, setCarInfo] = useState<any>(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -33,17 +34,19 @@ const HomePage = () => {
         const result = responseData?.Response?.Results[0]?.DecodedVINValues[0];
 
         const carInfoData = {
+          manufacturer: result?.Manufacturer[0] || "N/A",
           make: result?.Make[0] || "N/A",
           model: result?.Model[0] || "N/A",
           year: result?.ModelYear[0] || "N/A",
           bodyClass: result?.BodyClass[0] || "N/A",
           engineCylinders: result?.EngineCylinders[0] || "N/A",
           fuelTypePrimary: result?.FuelTypePrimary[0] || "N/A",
-          transmissionStyle: result?.TransmissionStyle[0] || "N/A",
+          turbo: result?.Turbo[0] || "N/A",
           trim: result?.Trim[0] || "N/A",
         };
 
         setCarInfo(carInfoData);
+        setIsSubmitted(true);
       } else {
         alert("Failed to get data!");
       }
@@ -55,27 +58,32 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <div className="home_container">
-        <input
-          type="text"
-          placeholder="VIN"
-          name="vin"
-          value={vinData.vin}
-          onChange={handleChange}
-        />
-        <button onClick={handleSubmit}>Submit</button>
-
-        {carInfo && (
-          <div className="car-info">
-            <h2>Car Information</h2>
-            <p>Make: {carInfo.make}</p>
-            <p>Model: {carInfo.model}</p>
-            <p>Year: {carInfo.year}</p>
-            <p>Body Class: {carInfo.bodyClass}</p>
-            <p>Engine Cylinders: {carInfo.engineCylinders}</p>
-            <p>Fuel Type: {carInfo.fuelTypePrimary}</p>
-            <p>Transmission Style: {carInfo.transmissionStyle}</p>
-            <p>Trim: {carInfo.trim}</p>
-          </div>
+        {!isSubmitted ? (
+          <>
+            <input
+              type="text"
+              placeholder="VIN"
+              name="vin"
+              value={vinData.vin}
+              onChange={handleChange}
+            />
+            <button onClick={handleSubmit}>Submit</button>
+          </>
+        ) : (
+          carInfo && (
+            <div className="car-info">
+              <h2>Car Information</h2>
+              <p>Manufacturer: {carInfo.manufacturer}</p>
+              <p>Make: {carInfo.make}</p>
+              <p>Model: {carInfo.model}</p>
+              <p>Year: {carInfo.year}</p>
+              <p>Body Class: {carInfo.bodyClass}</p>
+              <p>Engine Cylinders: {carInfo.engineCylinders}</p>
+              <p>Fuel Type: {carInfo.fuelTypePrimary}</p>
+              <p>Turbo: {carInfo.turbo}</p>
+              <p>Trim: {carInfo.trim}</p>
+            </div>
+          )
         )}
       </div>
     </div>
