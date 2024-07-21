@@ -1,0 +1,31 @@
+.about_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  color: #333333;
+  height: 100vh;
+}
+.about_container h1 {
+  font-size: 2rem;
+  margin: 0;
+  text-align: center;
+  color: #76885b;
+}
+.about_container p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  text-align: justify;
+  color: #333333;
+}
+.about_container p:last-of-type {
+  margin-bottom: 2rem;
+}/*# sourceMappingURL=AboutPage.css.map */

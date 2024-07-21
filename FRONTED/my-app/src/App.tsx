@@ -10,7 +10,7 @@ import OverviewPage from "./pages/Overview/OverviewPage";
 import RegisterPage from "./pages/Register/RegisterPage";
 import LoginPage from "./pages/Login/LoginPage";
 import HomePage from "./pages/Home/HomePage";
-import ResultsPage from "./pages/Results/ResultsPage";
+import AboutPage from "./pages/About/AboutPage";
 import { isValidToken } from "./helpers/authHelpers";
 import Navbar from "./components/Navbar/Navbar";
 import { UpdateAuthenticationType } from "./types/UpdateAuthenticationType";
@@ -94,9 +94,9 @@ function AppLayout() {
           }
         />
         <Route
-          path="/results"
+          path="/about"
           element={
-            isAuthenticated ? <ResultsPage /> : <Navigate to="/login" replace />
+            isAuthenticated ? <AboutPage /> : <Navigate to="/login" replace />
           }
         />
       </Routes>
