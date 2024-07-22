@@ -11,8 +11,9 @@ import RegisterPage from "./pages/Register/RegisterPage";
 import LoginPage from "./pages/Login/LoginPage";
 import HomePage from "./pages/Home/HomePage";
 import AboutPage from "./pages/About/AboutPage";
-import { isValidToken } from "./helpers/authHelpers";
+import HistoryPage from "./pages/History/HistoryPage";
 import Navbar from "./components/Navbar/Navbar";
+import { isValidToken } from "./helpers/authHelpers";
 import { UpdateAuthenticationType } from "./types/UpdateAuthenticationType";
 
 function AppLayout() {
@@ -97,6 +98,12 @@ function AppLayout() {
           path="/about"
           element={
             isAuthenticated ? <AboutPage /> : <Navigate to="/login" replace />
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            isAuthenticated ? <HistoryPage /> : <Navigate to="/login" replace />
           }
         />
       </Routes>
