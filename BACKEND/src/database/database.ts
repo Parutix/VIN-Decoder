@@ -5,7 +5,6 @@ import Result from "../entities/resultEntity";
 export async function connectToDatabase(): Promise<Connection> {
   try {
     const connection = await createConnection({
-      name: "primaryConnection",
       type: "mysql",
       host: "localhost",
       port: 3306,

@@ -26,7 +26,13 @@ export const login_user = async (req: Request, res: Response) => {
     if (!result || !result.user) {
       res.status(401).send("Invalid Credentials");
     } else {
-      res.status(200).json({ message: "Login succesful", token });
+      res
+        .status(200)
+        .json({
+          message: "Login succesful",
+          token,
+          user_id: result.user.user_id,
+        });
     }
   } catch (error) {
     res.status(400).send(`Error logging in: ${error}`);

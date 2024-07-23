@@ -11,7 +11,7 @@ export const createResult = async (req: Request, res: Response) => {
       res.status(400).send("Result creation failed");
     }
   } catch (error) {
-    res.status(400).send(`Error creating result: ${error}`);
+    res.status(400).send(`Error crreseating result: ${error}`);
   }
 };
 
