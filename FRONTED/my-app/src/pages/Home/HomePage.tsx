@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import "./HomePage.css";
 
 const HomePage = () => {
-  const [vinData, setVinData] = useState({
-    vin: "",
-  });
+  const user_id = localStorage.getItem("user_id");
+  const [vinData, setVinData] = useState({ vin: "" });
   const [carInfo, setCarInfo] = useState<any>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -18,6 +17,8 @@ const HomePage = () => {
 
   const handleSubmit = async () => {
     try {
+      console.log("Submitting VIN:", vinData.vin);
+
       const response = await fetch(
         `http://localhost:3000/api/decoder/decodeVIN?vin=${encodeURIComponent(
           vinData.vin
@@ -29,24 +30,58 @@ const HomePage = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log("Response:", responseData);
+        console.log("Response Data:", responseData);
 
         const result = responseData?.Response?.Results[0]?.DecodedVINValues[0];
+        console.log("Decoded VIN Result:", result);
 
         const carInfoData = {
-          manufacturer: result?.Manufacturer[0] || "N/A",
-          make: result?.Make[0] || "N/A",
-          model: result?.Model[0] || "N/A",
-          year: result?.ModelYear[0] || "N/A",
-          bodyClass: result?.BodyClass[0] || "N/A",
-          engineCylinders: result?.EngineCylinders[0] || "N/A",
-          fuelTypePrimary: result?.FuelTypePrimary[0] || "N/A",
-          turbo: result?.Turbo[0] || "N/A",
-          trim: result?.Trim[0] || "N/A",
+          manufacturer:
+            (result?.Manufacturer && result.Manufacturer[0]) || "N/A",
+          make: (result?.Make && result.Make[0]) || "N/A",
+          model: (result?.Model && result.Model[0]) || "N/A",
+          year: (result?.ModelYear && result.ModelYear[0]) || "N/A",
+          bodyClass: (result?.BodyClass && result.BodyClass[0]) || "N/A",
+          engineCylinders:
+            (result?.EngineCylinders && result.EngineCylinders[0]) || "N/A",
+          fuelTypePrimary:
+            (result?.FuelTypePrimary && result.FuelTypePrimary[0]) || "N/A",
+          turbo: (result?.Turbo && result.Turbo[0]) || "N/A",
+          trim: (result?.Trim && result.Trim[0]) || "N/A",
         };
+
+        console.log("Car Info Data:", carInfoData);
 
         setCarInfo(carInfoData);
         setIsSubmitted(true);
+
+        const resultsCount = Object.values(carInfoData).filter(
+          (value) => value !== "N/A" && value !== "" && value !== undefined
+        ).length;
+
+        console.log("Results Count:", resultsCount);
+
+        const createResultResponse = await fetch(
+          "http://localhost:3000/api/results/createResult",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              user_id: user_id,
+              vin: vinData.vin,
+              results_count: resultsCount,
+              carInfo: carInfoData,
+            }),
+          }
+        );
+
+        if (!createResultResponse.ok) {
+          console.error("Failed to save the result!");
+        } else {
+          console.log("Result saved successfully!");
+        }
       } else {
         alert("Failed to get data!");
       }

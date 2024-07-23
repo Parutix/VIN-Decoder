@@ -43,7 +43,9 @@ const LoginPage = ({ updateAuthentication }: LoginPageProps) => {
       if (response.ok) {
         const responseData = await response.json();
         const token = responseData.token;
-        if (token) {
+        const user_id = responseData.user_id;
+        if (token && user_id) {
+          localStorage.setItem("user_id", user_id);
           localStorage.setItem("token", token);
           const isValid = await isValidToken(token);
           alert("User logged in successfully!");
