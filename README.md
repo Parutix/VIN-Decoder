@@ -16,4 +16,5 @@ Learn More: Our About Page provides valuable insights into how VIN Decoder works
 ![Screenshot_7](https://github.com/user-attachments/assets/91d622d8-7e23-4249-91e5-4343aaa65446)
 
 Secure Access: JSON Web Tokens (JWT) for authentication. JWT ensures that user sessions are secure and protected, providing a robust mechanism for managing access to the app’s features.
+
 Reliable Data Storage: MySQL for database management. This relational database system efficiently stores and manages user data, search history, and vehicle information, ensuring quick access and reliable performance.
