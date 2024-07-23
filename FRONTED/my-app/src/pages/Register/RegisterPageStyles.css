@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 25px;
 }
 
 .register_form {
@@ -24,6 +25,7 @@
   width: 100%;
   border-radius: 5px;
   border: 1px solid #76885b;
+  font-size: 17.5px;
 }
 .register_form .register_button {
   margin: 30px;

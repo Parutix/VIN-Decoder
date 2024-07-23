@@ -1,26 +1,32 @@
 body {
   background-color: #eeeeee;
   color: #333333;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 .home_container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
 }
-.home_container input {
+
+input {
   width: 100%;
   padding: 0.5rem;
   font-size: 2.5rem;
   border: 1px solid #76885b;
   border-radius: 0.5rem;
 }
-.home_container button {
-  margin-top: 20px;
-  padding: 0.5rem 3rem;
-  font-size: 2.5rem;
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 1.5rem;
   background-color: #76885b;
   color: white;
   border: none;
@@ -29,13 +35,54 @@ body {
 }
 
 .car-info {
-  margin-top: 20px;
+  margin-top: 1rem;
+  max-width: 600px;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #76885b;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
 }
 
 .car-info h2 {
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
 }
 
 .car-info p {
-  margin: 5px 0;
-}/*# sourceMappingURL=HomePage.css.map */
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  input {
+    font-size: 1.4rem;
+    padding: 0.5rem;
+  }
+  button {
+    font-size: 1.2rem;
+    padding: 0.5rem 1.5rem;
+  }
+  .car-info h2 {
+    font-size: 1.6rem;
+  }
+  .car-info p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  input {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
+  button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  .car-info h2 {
+    font-size: 1.4rem;
+  }
+  .car-info p {
+    font-size: 0.9rem;
+  }
+} /*# sourceMappingURL=HomePage.css.map */

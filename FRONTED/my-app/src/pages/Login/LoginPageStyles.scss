@@ -12,6 +12,7 @@ $alternate-color: #627254;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 25px;
 }
 
 .login_form {
@@ -49,4 +50,59 @@ $alternate-color: #627254;
   width: 100%;
   border-radius: 5px;
   border: 1px solid $accent-color;
+  font-size: 17.5px;
+}
+
+@media (max-width: 768px) {
+  .login_container {
+    font-size: 20px;
+  }
+
+  .login_form {
+    h2 {
+      font-size: 18px;
+    }
+
+    .login_button {
+      margin: 20px;
+      padding: 8px;
+    }
+
+    .account_have_link {
+      margin-left: 8px;
+    }
+  }
+
+  .login_input {
+    margin: 8px;
+    padding: 8px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login_container {
+    font-size: 18px;
+  }
+
+  .login_form {
+    h2 {
+      font-size: 16px;
+    }
+
+    .login_button {
+      margin: 15px;
+      padding: 6px;
+    }
+
+    .account_have_link {
+      margin-left: 5px;
+    }
+  }
+
+  .login_input {
+    margin: 6px;
+    padding: 6px;
+    font-size: 14px;
+  }
 }

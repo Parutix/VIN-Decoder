@@ -5,6 +5,27 @@ const AboutPage = () => {
   return (
     <div className="about_container">
       <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <h1>About</h1>
       <p>
         Welcome to VIN Decoder, your go-to app for uncovering detailed
@@ -54,9 +75,6 @@ const AboutPage = () => {
         whether you're buying a used car, verifying vehicle information, or just
         satisfying your curiosity. VIN Decoder helps you make informed decisions
         by providing all the necessary details at your fingertips.
-      </p>
-      <p>
-        _______________________________________________________________________________________________________________________________________
       </p>
     </div>
   );

@@ -13,12 +13,22 @@
   z-index: 1000;
 }
 
+.nav .siteTitle {
+  font-size: 1.5rem; /* Adjust size as needed */
+  color: #627254;
+  text-decoration: none;
+}
+
 .nav ul {
   padding: 0;
   margin: 0;
   list-style: none;
   display: flex;
   gap: 2rem;
+}
+
+.nav li {
+  margin: 0; /* Ensure no extra margin */
 }
 
 .nav a {
@@ -29,4 +39,19 @@
 .nav a:hover {
   color: rgb(90, 105, 68);
   transition: 0.5s;
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding: 0.5rem;
+    flex-direction: column;
+  }
+  .nav ul {
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .nav a {
+    font-size: 1rem;
+  }
 }/*# sourceMappingURL=Navbar.css.map */
